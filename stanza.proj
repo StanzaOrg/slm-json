@@ -1,0 +1,17 @@
+include? ".slm/stanza.proj"
+pkg-cache: ".slm/pkg-cache"
+packages * defined-in "src/"
+
+include "src/stanza.proj"
+
+build main :
+  inputs:
+    json
+  pkg: ".slm/pkgs"
+
+build-test json-tests :
+  inputs:
+    json/tests
+  pkg: ".slm/test-pkgs"
+  o: "json-tests"
+
