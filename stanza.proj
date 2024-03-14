@@ -1,13 +1,35 @@
 include? ".slm/stanza.proj"
 pkg-cache: ".slm/pkg-cache"
-packages * defined-in "src/"
 
-include "src/stanza.proj"
+package json defined-in "src/json.stanza"
+packages json/* defined-in "src/json/"
+
+package json requires :
+  ccflags:
+    "-L{.}/build"
+    "-lstz-json"
+
+; compile cJSON.c into a static library
+compile flag "-lstz-json" :
+  on-platform :
+    linux :
+      "mkdir -p '{.}/build'"
+      "cc -fPIC -c -DPLATFORM_LINUX '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -o '{.}/build/cJSON.o'"
+      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
+    os-x :
+      "mkdir -p '{.}/build'"
+      "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/build/cJSON.o'"
+      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
+    windows :
+      "if not exist '{.}\\build\\' mkdir {.}\\build"
+      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}/include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
+      "ar rcs '{.}\\build\\libstz-json.dll' '{.}\\build\\cJSON.o'"
 
 build main :
   inputs:
     json
   pkg: ".slm/pkgs"
+  ;o: "main"
 
 build-test json-tests :
   inputs:
