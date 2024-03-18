@@ -21,7 +21,7 @@ compile flag "-lstz_json" :
       "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/build/cJSON.o'"
       "ar rcs '{.}/build/libstz_json.a' '{.}/build/cJSON.o'"
     windows :
-      "if not exist '{.}\\build\\' mkdir {.}\\build"
+      "mkdir {.}\\build"
       "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}/include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
       "ar rcs '{.}\\build\\libstz_json.dll' '{.}\\build\\cJSON.o'"
 
