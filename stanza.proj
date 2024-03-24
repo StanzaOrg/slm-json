@@ -6,7 +6,13 @@ packages json/* defined-in "src/json/"
 
 package json requires :
   ccflags:
-    "-L{.}/build"
+    on-platform :
+      linux :
+        "-L{.}/build"
+      os-x :
+        "-L{.}/build"
+      windows :
+        "-L{.}\\build"
     "-lstz_json"
 
 ; compile cJSON.c into a static library
@@ -22,7 +28,7 @@ compile flag "-lstz_json" :
       "ar rcs '{.}/build/libstz_json.a' '{.}/build/cJSON.o'"
     windows :
       "mkdir {.}\\build"
-      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}/include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
+      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
       "ar rcs '{.}\\build\\libstz_json.dll' '{.}\\build\\cJSON.o'"
 
 build main :
