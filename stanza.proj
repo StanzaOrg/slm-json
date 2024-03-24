@@ -29,7 +29,7 @@ compile flag "-lstz_json" :
     windows :
       "mkdir {.}\\build"
       "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
-      "ar rcs '{.}\\build\\libstz_json.dll' '{.}\\build\\cJSON.o'"
+      "ar rcs '{.}\\build\\libstz_json.a' '{.}\\build\\cJSON.o'"
 
 build main :
   inputs:
