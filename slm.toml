@@ -1,6 +1,6 @@
 
-name = "slm_json"
-version = "0.0.4"
+name = "json"
+version = "0.0.5"
 
 [dependencies]
 

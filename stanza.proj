@@ -13,23 +13,23 @@ package json requires :
         "-L{.}/build"
       windows :
         "-L{.}\\build"
-    "-lstz_json"
+    "-lstz-json"
 
 ; compile cJSON.c into a static library
-compile flag "-lstz_json" :
+compile flag "-lstz-json" :
   on-platform :
     linux :
       "mkdir -p '{.}/build'"
       "cc -fPIC -c -DPLATFORM_LINUX '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz_json.a' '{.}/build/cJSON.o'"
+      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
     os-x :
       "mkdir -p '{.}/build'"
       "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz_json.a' '{.}/build/cJSON.o'"
+      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
     windows :
       "mkdir {.}\\build"
       "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
-      "ar rcs '{.}\\build\\libstz_json.a' '{.}\\build\\cJSON.o'"
+      "ar rcs '{.}\\build\\libstz-json.a' '{.}\\build\\cJSON.o'"
 
 build main :
   inputs:
@@ -37,9 +37,9 @@ build main :
   pkg: ".slm/pkgs"
   ;o: "main"
 
-build-test json_tests :
+build-test json-tests :
   inputs:
     json/tests
   pkg: ".slm/test-pkgs"
-  o: "json_tests"
+  o: "json-tests"
 
