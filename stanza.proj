@@ -15,21 +15,9 @@ package json requires :
         "-L{.}\\build"
     "-lstz-json"
 
-; compile cJSON.c into a static library
-compile flag "-lstz-json" :
-  on-platform :
-    linux :
-      "mkdir -p '{.}/build'"
-      "cc -fPIC -c -DPLATFORM_LINUX '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
-    os-x :
-      "mkdir -p '{.}/build'"
-      "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
-    windows :
-      "mkdir {.}\\build"
-      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
-      "ar rcs '{.}\\build\\libstz-json.a' '{.}\\build\\cJSON.o'"
+; This include file will only exist in the git repo at binary package build time.
+; End-user slm packages will not have this include file.
+include? "stanza-library.proj"
 
 build main :
   inputs:
