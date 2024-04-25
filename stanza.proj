@@ -9,10 +9,26 @@ package json requires :
     on-platform :
       linux :
         "-L{.}/build"
+        ; specify run-time shared-library search paths
+        ; use $ORIGIN as the location of the running executable
+        "-Wl,-rpath,$ORIGIN"
+        "-Wl,-rpath,$ORIGIN/.slm/deps/json/build"
+        "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
+        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/build"
+        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       os-x :
         "-L{.}/build"
+        ; specify run-time shared-library search paths
+        ; use $ORIGIN as the location of the running executable
+        "-Wl,-rpath,$ORIGIN"
+        "-Wl,-rpath,$ORIGIN/.slm/deps/json/build"
+        "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
+        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/build"
+        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       windows :
         "-L{.}\\build"
+        "-Wl,-Bdynamic"
+        ; windows uses $PATH for dll location
     "-lstz-json"
 
 ; This include file will only exist in the git repo at binary package build time.
