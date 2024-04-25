@@ -25,7 +25,7 @@ build main :
   pkg: ".slm/pkgs"
   ;o: "main"
 
-build-test json-tests :
+build-test test :
   inputs:
     json/tests
   pkg: ".slm/test-pkgs"
