@@ -8,25 +8,21 @@ package json requires :
   ccflags:
     on-platform :
       linux :
-        "-L{.}/build"
+        "-L{.}/lib"
         ; specify run-time shared-library search paths
         ; use $ORIGIN as the location of the running executable
         "-Wl,-rpath,$ORIGIN"
-        "-Wl,-rpath,$ORIGIN/.slm/deps/json/build"
         "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
-        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/build"
         "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       os-x :
-        "-L{.}/build"
+        "-L{.}/lib"
         ; specify run-time shared-library search paths
         ; use $ORIGIN as the location of the running executable
         "-Wl,-rpath,$ORIGIN"
-        "-Wl,-rpath,$ORIGIN/.slm/deps/json/build"
         "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
-        "-Wl,-rpath,$ORIGIN/../.slm/deps/json/build"
         "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       windows :
-        "-L{.}\\build"
+        "-L{.}\\lib"
         "-Wl,-Bdynamic"
         ; windows uses $PATH for dll location
     "-lstz-json"
