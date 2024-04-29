@@ -12,14 +12,18 @@ package json requires :
         ; specify run-time shared-library search paths
         ; use $ORIGIN as the location of the running executable
         "-Wl,-rpath,$ORIGIN"
+        "-Wl,-rpath,$ORIGIN/lib"
         "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
+        "-Wl,-rpath,$ORIGIN/../lib"
         "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       os-x :
         "-L{.}/lib"
         ; specify run-time shared-library search paths
         ; use $ORIGIN as the location of the running executable
         "-Wl,-rpath,$ORIGIN"
+        "-Wl,-rpath,$ORIGIN/lib"
         "-Wl,-rpath,$ORIGIN/.slm/deps/json/lib"
+        "-Wl,-rpath,$ORIGIN/../lib"
         "-Wl,-rpath,$ORIGIN/../.slm/deps/json/lib"
       windows :
         "-L{.}\\lib"
