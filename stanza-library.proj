@@ -6,15 +6,15 @@
 compile flag "-lstz-json" :
   on-platform :
     linux :
-      "mkdir -p '{.}/build'"
-      "cc -fPIC -c -DPLATFORM_LINUX '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
+      "mkdir -p '{.}/lib'"
+      "cc -fPIC -c -DPLATFORM_LINUX '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -o '{.}/lib/cJSON.o'"
+      "ar rcs '{.}/lib/libstz-json.a' '{.}/lib/cJSON.o'"
     os-x :
-      "mkdir -p '{.}/build'"
-      "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/build/cJSON.o'"
-      "ar rcs '{.}/build/libstz-json.a' '{.}/build/cJSON.o'"
+      "mkdir -p '{.}/lib'"
+      "cc -fPIC -c -DPLATFORM_OS_X '-I{STANZA_CONFIG}/include' '{.}/src/cJSON.c' -c -o '{.}/lib/cJSON.o'"
+      "ar rcs '{.}/lib/libstz-json.a' '{.}/lib/cJSON.o'"
     windows :
-      "mkdir {.}\\build"
-      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\build\\cJSON.o'"
-      "ar rcs '{.}\\build\\libstz-json.a' '{.}\\build\\cJSON.o'"
+      "mkdir {.}\\lib"
+      "gcc -c -DPLATFORM_WINDOWS '-I{STANZA_CONFIG}\\include' '{.}\\src\\cJSON.c' -o '{.}\\lib\\cJSON.o'"
+      "ar rcs '{.}\\lib\\libstz-json.a' '{.}\\lib\\cJSON.o'"
 
